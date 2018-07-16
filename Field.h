@@ -26,7 +26,11 @@ enum DetalState
 };
 
 //Структура поля
-struct l_stField { bool dot = false; };
+struct l_stField 
+{ 
+	bool dot = false; 
+	GLfloat color[3] = { 0.1f, 0.7f, 1.0f };
+};
 
 class TetrisField {
 public:

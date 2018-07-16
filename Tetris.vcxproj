@@ -98,11 +98,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -111,13 +112,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,6 +150,7 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NextDetal.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="Stats.cpp" />
     <ClCompile Include="Tetris.cpp" />
@@ -157,12 +160,21 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="Gui.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="NextDetal.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="Stats.h" />
     <ClInclude Include="Tetris.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Tetris.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\KossDM\Desktop\Icon.ico" />
+    <Image Include="c:\users\kossdm\desktop\icon2.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

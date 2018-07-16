@@ -45,7 +45,7 @@ void TetrisStats::IncScore(short in_shCount)
 
 void TetrisStats::Drow()
 {
-	glColor3fv(g_aRed);
+	glColor3fv(g_aWhite);
 	renderBitmapString(245, 300, "Welcome!");
 	renderBitmapString(230, 260, "Speed: ");
 	renderBitmapString(285, 260, inttostr_(m_nSpeed));

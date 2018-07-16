@@ -1,8 +1,6 @@
 #include "Detal.h"	
 
-#include <random> 
-
-//Для пущей случайности
+// Для пущей случайности
 std::random_device rd;   // non-deterministic generator  
 std::mt19937 gen(rd());  // to seed mersenne twister.  
 std::uniform_int_distribution<> GenDetal(0, 6); // Диапазон 0 - 7
@@ -30,6 +28,26 @@ void TetrisDetal::Change()
 	m_nNowDetal = GenDetal(gen);
 	m_sDetal[0].y = STARTHEIGHT;
 	m_sDetal[0].x = GenXPos(gen);
+
+	GLfloat l_gfColor[3] = { 0,0,0 };
+
+	GetRandomColor(l_gfColor);
+
+	m_sDetal[0].color[0] = l_gfColor[0];
+	m_sDetal[0].color[1] = l_gfColor[1];
+	m_sDetal[0].color[2] = l_gfColor[2];
+
+	m_sDetal[1].color[0] = l_gfColor[0];
+	m_sDetal[1].color[1] = l_gfColor[1];
+	m_sDetal[1].color[2] = l_gfColor[2];
+
+	m_sDetal[2].color[0] = l_gfColor[0];
+	m_sDetal[2].color[1] = l_gfColor[1];
+	m_sDetal[2].color[2] = l_gfColor[2];
+
+	m_sDetal[3].color[0] = l_gfColor[0];
+	m_sDetal[3].color[1] = l_gfColor[1];
+	m_sDetal[3].color[2] = l_gfColor[2];
 }
 
 /**
@@ -85,10 +103,10 @@ void TetrisDetal::Drow()
 	// Рисуем все четыре точки детали
 	for (int i = 0; i < DS; i++)
 	{
-		if (m_sDetal[i].y <= CH && m_sDetal[i].y >= 1)
+		if (m_sDetal[i].y <= CH)
 		{
-			glColor3fv(g_aLightBlue);
-			glRectf((GLfloat)(m_sDetal[i].x + 0.01)*SQUARESCALE, (GLfloat)(m_sDetal[i].y + 0.01)*SQUARESCALE, (GLfloat)(m_sDetal[i].x + 0.99)*SQUARESCALE, (GLfloat)(m_sDetal[i].y + 0.99)*SQUARESCALE);
+			glColor3fv(m_sDetal[i].color);
+			glRectf((GLfloat)(m_sDetal[i].x)*SQUARESCALE, (GLfloat)(m_sDetal[i].y)*SQUARESCALE, (GLfloat)(m_sDetal[i].x + 1)*SQUARESCALE, (GLfloat)(m_sDetal[i].y + 1)*SQUARESCALE);
 		}
 	}
 }

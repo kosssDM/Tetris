@@ -1,8 +1,8 @@
 #pragma once
 #include "Detal.h"
+#include "NextDetal.h"
 #include "Selector.h"
 #include "Stats.h"
-
 							     
 // Нумератор клавиш управления
 enum ButtonKeys
@@ -13,8 +13,8 @@ enum ButtonKeys
 	KEYDOWN			   // Клавиша стрелка в низ
 };
 
-	void Display();
-	void Timer(int);
-	void DetalWork(int);
-	void KeySwitch(int in_nKey, int a, int b);
-	void TetrisRun(int argc, char **argv);        // Основной цикл
+void Display();                               // Функция отображения всех элементов
+void Timer(int);                              // Функция таймера для глута
+void DetalWork();							  // Обработка статуса детали	
+void KeySwitch(int in_nKey, int a, int b);    // Обработка нажатия клавиш управления
+void TetrisRun(int argc, char **argv);        // Основной цикл

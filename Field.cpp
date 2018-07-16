@@ -1,6 +1,6 @@
 #include "Field.h"
 
-/**
+/** 
  Конструктор
    на входе  : *
    на выходе : *
@@ -42,6 +42,10 @@ void TetrisField::Rebuild()//TODO Можно улучшить отслеживанием максимальной высо
 				for (int x = 1; x <= CW; x++)
 				{
 					m_sfield[x][yy].dot = m_sfield[x][yy + 1].dot;
+
+					m_sfield[x][yy].color[0] = m_sfield[x][yy + 1].color[0];
+					m_sfield[x][yy].color[1] = m_sfield[x][yy + 1].color[1];
+					m_sfield[x][yy].color[2] = m_sfield[x][yy + 1].color[2];
 				}
 			}
 			l_nLineOmmited++;
@@ -64,6 +68,11 @@ int TetrisField::AddDetal(l_stDot *in_sDetal)//Перенос детали на поле
 	for (int i = 0; i < DS; i++)
 	{
 		m_sfield[in_sDetal[i].x][in_sDetal[i].y].dot = true;
+
+		// Скопируем цвет квадратика
+		m_sfield[in_sDetal[i].x][in_sDetal[i].y].color[0] = in_sDetal[i].color[0];
+		m_sfield[in_sDetal[i].x][in_sDetal[i].y].color[1] = in_sDetal[i].color[1];
+		m_sfield[in_sDetal[i].x][in_sDetal[i].y].color[2] = in_sDetal[i].color[2];
 	}
 	for (int i = 0; i < DS; i++)
 	{
@@ -199,8 +208,6 @@ short TetrisField::GetState(l_stDot *in_sDetal)
 */
 void TetrisField::Drow()
 {
-	// Выберем цвет
-	glColor3fv(g_aRed);
 	// Нарисуем занятые квадраты на поле
 	for (int x = 1; x <= CW; x++)
 	{
@@ -208,18 +215,19 @@ void TetrisField::Drow()
 		{
 			if (m_sfield[x][y].dot == true)
 			{
+				glColor3fv(m_sfield[x][y].color);
 				glRectf(
-					(GLfloat)(x + 0.01)*SQUARESCALE,
-					(GLfloat)(y + 0.01)*SQUARESCALE,
-					(GLfloat)(x + 0.99)*SQUARESCALE,
-					(GLfloat)(y + 0.99)*SQUARESCALE
+					(GLfloat)(x)*SQUARESCALE,
+					(GLfloat)(y)*SQUARESCALE,
+					(GLfloat)(x + 1)*SQUARESCALE,
+					(GLfloat)(y + 1)*SQUARESCALE
 				);
 			}
 		}
 	}
 	// Нарисуем сетку поля
 	// Выберем цвет
-	glColor3fv(g_aLightRed);
+	glColor3fv(g_aLightWhite);
 	// Тип фигур
 	glBegin(GL_LINES);
 	// Нарисуем вертикальные линии

@@ -1,7 +1,6 @@
 #pragma once
 #include "Gui.h"
 
-
 #define STARTHEIGHT  24           // —тартова€ высота дл€ отрисовки детали
 
 class TetrisDetal {
